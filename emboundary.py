@@ -54,6 +54,8 @@ class particle:
     
     def potentialContribution(self,pos):
         dist = self.position.distance(pos)
+        if dist == 0:
+            return 1e10
         return 0.1/dist
 
 class particlearray:
@@ -223,7 +225,7 @@ vList = [position(0.6,0), position(0.4,0), position(0.4,0.6), position(0.2, 1), 
 
 fixedpospars = []
 #fixedpospars = [position(0.6,0), position(0.4,0), position(0.4,0.6), position(0.2, 1), position(0.3,1), position(0.5,0.75), position(0.7,1), position(0.8,1), position(0.6,0.6)]
-attemptone = simulatedAnnealing(200,fixedpospars,1,1,0.1,1e10,1e-6,10000000,vList)
+attemptone = simulatedAnnealing(500,fixedpospars,1,1,0.1,1e10,1e-6,10000000,vList)
 t0 = time.time()
 attemptone.saLoop()
 t1 = time.time()
